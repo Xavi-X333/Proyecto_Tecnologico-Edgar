@@ -1,0 +1,23 @@
+navbar {
+    display: 'flex';
+    justify-content: space-between;
+    align-Items: 'center';
+    padding: '1rem';
+    background-Color: '#333';
+    color: '#fff';
+}
+
+brand {
+    display: 'flex';
+    align-Items: 'center';
+}
+
+logo {
+    height: '40px';
+}
+
+navLinks {
+    list-style: 'none';
+    display: 'flex';
+    gap: '1rem';
+}
