@@ -12,10 +12,9 @@
     z-index: 100;
 }
 
-.logo {
-    font-size: 32px;
-    color: #fff;
-    font-weight: 700;
+.Logo {
+    width: 100px;
+    height: auto;
 }
 
 .navbar a {
