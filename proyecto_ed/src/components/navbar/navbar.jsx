@@ -1,18 +1,18 @@
 import React from "react"
-//import logo from "../../assets/images/logo1.jpg"
+//import logo from "../../assets/images/logo edgar.svg"
 import { Link } from "react-router-dom"
 import './navbar.css'
 
 const Navbar = () => {
     return (
         <header className="header">
-            <a href='../../assets/images/logo1.jpg' className="logo">*Logo*</a>
+            <Link to="/" className="logo"><img href="../../assets/images/logo edgar.svg" /*TODO: debo colocar el logo*/  ></img></Link>
             <nav className="navbar">
                 <Link to="/">Inicio</Link>
-                <Link to="/src/pages/productos.jsx">Productos</Link>
-                <Link to="/src/pages/pedidos.jsx">Pedidos</Link>
-                <Link to="/src/pages/contacto.jsx">Contacto</Link>
-                <Link to="/src/pages/inicio_de_sesion.jsx">Inicio de Seción</Link>
+                <Link to="/productos">Productos</Link>
+                <Link to="/pedidos">Pedidos</Link>
+                <Link to="/contacto">Contacto</Link>
+                <Link to="/inicio_de_sesion">Inicio de Seción</Link>
             </nav>
         </header>
     )

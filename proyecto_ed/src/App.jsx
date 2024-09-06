@@ -15,10 +15,10 @@ function App() {
             <Navbar />
             <Routes>
                 <Route path="/" element={<Inicio />} />
-                <Route   path="/src/pages/productos.jsx" element={<Productos />} />
-                <Route path="/src/pages/pedidos.jsx" element={<Pedidos />} />
-                <Route path="/src/pages/contacto.jsx" element={<Contacto />} />
-                <Route path="/src/pages/inicio_de_sesion.jsx" element={<Inicio_de_Sesion />} />
+                <Route path="/productos" element={<Productos />} />
+                <Route path="/pedidos" element={<Pedidos />} />
+                <Route path="/contacto" element={<Contacto />} />
+                <Route path="/inicio_de_sesion" element={<Inicio_de_Sesion />} />
             </Routes>
         </Router>
         </div>
