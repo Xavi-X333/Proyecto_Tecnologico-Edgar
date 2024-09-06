@@ -2,14 +2,46 @@
     position: relative;
     width: 420px;
     height: 450px;
-    background-color: rgb(0, 64, 64);
+    background-color: transparent;
+    border: 2px solid rgba(255,255,255,.1);
+    backdrop-filter: blur(30px);
     border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, .4);
     color: #fff;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    transition: height .2s ease;
+}
+
+.wrapper.active {
+    height: 520px;
 }
 
 .wrapper .form-box {
     width: 100%;
     padding: 40px;
+}
+
+.wrapper .form-box.login {
+    transition: traslate .18s ease;
+    translate: 0;
+}
+
+.wrapper.active .form-box.login {
+    transition: none;
+    translate: -400px;
+}
+
+.wrapper .form-box.registrarse {
+    position: absolute;
+    transition: none;
+    translate: 400px;
+}
+
+.wrapper.active .form-box.registrarse {
+    transition: traslate .18s ease;
+    translate: 0;
 }
 
 form h1 {

@@ -15,7 +15,7 @@ function App() {
             <Navbar />
             <Routes>
                 <Route path="/" element={<Inicio />} />
-                <Route path="/src/pages/productos.jsx" element={<Productos />} />
+                <Route   path="/src/pages/productos.jsx" element={<Productos />} />
                 <Route path="/src/pages/pedidos.jsx" element={<Pedidos />} />
                 <Route path="/src/pages/contacto.jsx" element={<Contacto />} />
                 <Route path="/src/pages/inicio_de_sesion.jsx" element={<Inicio_de_Sesion />} />
