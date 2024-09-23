@@ -30,7 +30,7 @@ function Inicio_de_Sesion() {
                         <label><input type='checkbox'/>Recordar</label>
                         <a href='#'>Olvido su contraseña?</a>
                     </div>
-                    <button type='summit'>Siguiente</button>
+                    <button className='boton-login' type='summit'>Siguiente</button>
                     <div className='register-link'>
                         <p>No tienes una cuenta? <a href='#' onClick={registerLink}>Registrate</a></p>
                     </div>
@@ -55,7 +55,7 @@ function Inicio_de_Sesion() {
                     <div className="recordar">
                         <label><input type='checkbox'/>Acepto los terminos y condiciones</label>
                     </div>
-                    <button type='summit'>Registrarse</button>
+                    <button className='boton-login' type='summit'>Registrarse</button>
                     <div className='register-link'>
                         <p>Ya tienes una cuenta? <a href='#' onClick={loginlink}>Inicia Sesion</a></p>
                     </div>
@@ -67,5 +67,3 @@ function Inicio_de_Sesion() {
 }
 
 export default Inicio_de_Sesion;
-
-// retire los className de los links svg para asignarselos a los que ya traian propiamente para asi solucionar el error de la consola del navegador

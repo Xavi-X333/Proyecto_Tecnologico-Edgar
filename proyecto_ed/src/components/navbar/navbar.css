@@ -1,11 +1,13 @@
-.header {
+    .header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 60px;
-    padding: 20px 10%;
+    height: 75px;
+    padding: 20px 5%;
     background-color: transparent;
+    backdrop-filter: blur(30px);
+    border: 0.2px solid rgba(255,255,255,.1);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -13,16 +15,16 @@
 }
 
 .Logo {
-    width: 100px;
+    width: 60px;
     height: auto;
 }
 
 .navbar a {
     position: relative;
     font-size: 18px;
-    color: #fff;
+    color: white;
     font-weight: 500;
-    margin-left: 50px;
+    margin-left: 40px;
 }
 
 .navbar a::before {
@@ -32,7 +34,7 @@
     left: 0;
     width: 0;
     height: 2px;
-    background: #fff;
+    background: white;
     transition: .3s;
 }
 
