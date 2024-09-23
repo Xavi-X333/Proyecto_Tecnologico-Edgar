@@ -2,8 +2,9 @@ import React from 'react';
 import './productos.css'
 
 function Productos() {
-    return (    
-        <>
+    return (
+        /*Todos estos contenedores sirven a manera d ejemplo para probar el comportamiento de estos cuando se vaya aumentando la cantidad de productos en la pagina, la informacion de los productos se deberia de agregar automanticamente*/    
+        <> 
         <div className='contenedor'>
             <div className='producto'>
                 <img

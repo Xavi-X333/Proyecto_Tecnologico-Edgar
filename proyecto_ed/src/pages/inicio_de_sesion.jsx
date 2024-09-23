@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './inicio_de_sesion.css'
 
 function Inicio_de_Sesion() {
+    // Darle funicalidad al login con supabase
 
     const [action, setAction] = useState('');
 

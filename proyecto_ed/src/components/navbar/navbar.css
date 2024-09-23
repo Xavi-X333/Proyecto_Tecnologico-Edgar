@@ -1,4 +1,6 @@
-    .header {
+/* debo de editar el navbar para que sea responsive cuando se ajuste a la pantalla de un smartphone */
+
+.header {
     position: fixed;
     top: 0;
     left: 0;

@@ -2,6 +2,8 @@ import React from 'react';
 import './contacto.css';
 
 function Contacto() {
+    // darle funcionalidad al formulario
+    // Ademas de llenar el formulario, en la parte inferior se debera de colocar los links de las redes sociales e informacion respectiva
     return (
         <section className='contacto'>
             <form>
