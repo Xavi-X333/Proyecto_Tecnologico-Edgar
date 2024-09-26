@@ -9,6 +9,7 @@ import Pedidos from './pages/pedidos';
 import Contacto from './pages/contacto';
 import Inicio from './pages/inicio';
 import Inicio_de_Sesion from './pages/inicio_de_sesion';
+import AgregarProductos from './pages/agregarproductos';
 
 function App() {
     return (
@@ -23,6 +24,7 @@ function App() {
                 <Route path="/pedidos" element={<Pedidos />} />
                 <Route path="/contacto" element={<Contacto />} />
                 <Route path="/inicio_de_sesion" element={<Inicio_de_Sesion />} />
+                <Route path="/agregar_productos" element={<AgregarProductos />} />
             </Routes>
         </Router>
         </div>
