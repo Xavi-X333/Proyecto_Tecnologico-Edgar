@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { supabase } from '../../supabaseClient';
 
-const AddProduct = async(product) => {
-  const [nombre, setName] = useState('');
-  const [descripcion, setDescription] = useState('');
-  const [precio, setPrice] = useState('');
-  const [imagenUrl, setImageUrl] = useState('');
+const AddProduct = () => {  // Sin el async aquí
+  const [name, setName] = useState('');
+  const [description, setDescription] = useState('');
+  const [price, setPrice] = useState('');
+  const [imageUrl, setImageUrl] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -13,15 +13,14 @@ const AddProduct = async(product) => {
     const { data, error } = await supabase
       .from('products')
       .insert([
-        { name: product.name, description: product.description, price: product.price, image_url: product.image_url }
+        { name, description, price, image_url: imageUrl }
     ]);
-
 
     if (error) {
       console.error('Error al agregar producto:', error.message);
-      return
+      return;
     } else {
-      console.log('Producto agregado con exito:', data);
+      console.log('Producto agregado con éxito:', data);
       setName('');
       setDescription('');
       setPrice('');
@@ -37,16 +36,16 @@ const AddProduct = async(product) => {
           <label>Nombre del producto:</label>
           <input 
             type="text" 
-            value={nombre} 
+            value={name} 
             onChange={(e) => setName(e.target.value)} 
             required 
             style={{ width: '100%', padding: '8px', marginBottom: '10px' }}
           />
         </div>
         <div style={{ marginBottom: '10px' }}>
-          <label>Descripcion:</label>
+          <label>Descripción:</label>
           <textarea 
-            value={descripcion} 
+            value={description} 
             onChange={(e) => setDescription(e.target.value)} 
             required 
             style={{ width: '100%', padding: '8px', marginBottom: '10px' }}
@@ -56,7 +55,7 @@ const AddProduct = async(product) => {
           <label>Precio:</label>
           <input 
             type="number" 
-            value={precio} 
+            value={price} 
             onChange={(e) => setPrice(e.target.value)} 
             required 
             style={{ width: '100%', padding: '8px', marginBottom: '10px' }}
@@ -66,7 +65,7 @@ const AddProduct = async(product) => {
           <label>URL de la imagen:</label>
           <input 
             type="text" 
-            value={imagenUrl} 
+            value={imageUrl} 
             onChange={(e) => setImageUrl(e.target.value)} 
             required 
             style={{ width: '100%', padding: '8px', marginBottom: '10px' }}
