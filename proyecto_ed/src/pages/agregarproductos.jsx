@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { supabase } from '../../supabaseClient';
 
-const AddProduct = () => {
+const AddProduct = async(product) => {
   const [nombre, setName] = useState('');
   const [descripcion, setDescription] = useState('');
   const [precio, setPrice] = useState('');
@@ -11,12 +11,15 @@ const AddProduct = () => {
     e.preventDefault();
 
     const { data, error } = await supabase
+      .from('products')
       .insert([
-        { nombre, descripcion, precio, image_url: imagenUrl },
-      ]);
+        { name: product.name, description: product.description, price: product.price, image_url: product.image_url }
+    ]);
+
 
     if (error) {
-      console.error('Error al agregar producto:', error);
+      console.error('Error al agregar producto:', error.message);
+      return
     } else {
       console.log('Producto agregado con exito:', data);
       setName('');
