@@ -155,7 +155,7 @@ header {
 .h2-sub {
     font-size: 10rem;
     font-family: 'Poppins', sans-serif;
-    color: #3bcc75;
+    color: #ffffff;
     font-weight: 600;
     line-height: .4;
 }
@@ -283,7 +283,7 @@ header {
 }
 
 footer {
-    padding: 7.9rem 0;
+    padding: 1px 1;
     background-color: #121212; 
     color: #fff;
     text-align: center;
@@ -447,14 +447,14 @@ footer {
 
     .footer-div{
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
     }
 
     .social-media,
     .news-form {
         width: 100%;
         max-width: 27.3rem;
-        margin: 0 1rem;
+        margin: 0 2rem;
     }
 
    .news-btn {

@@ -127,6 +127,10 @@ form .register-link {
     margin: 20px 0 15px;
 }
 
+.p_inferior {
+    font-size: 20px;
+}
+
 .register-link p a {
     color: #fff;
     text-decoration: none;

@@ -1,31 +1,33 @@
 import React, { useState, useEffect } from 'react';
 import { supabase } from '../../supabaseClient';
 
-const AddProduct = ({ onProductAdded }) => {
-  const [name, setName] = useState('');
-  const [description, setDescription] = useState('');
-  const [price, setPrice] = useState('');
-  const [imageUrl, setImageUrl] = useState('');
+const AddProduct = ({ onProductoAgregado }) => {
+  const [titulo, setTitulo] = useState('');
+  const [descripcion, setDescripcion] = useState('');
+  const [precio, setPrecio] = useState('');
+  const [stock, setStock] = useState('');
+  const [imagenUrl, setImagenUrl] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const { data, error } = await supabase
-      .from('products')
+      .from('productos')
       .insert([
-        { name, description, price, image_url: imageUrl }
+        { titulo, descripcion, precio, stock, imagen_url: imagenUrl }
     ]);
 
     if (error) {
       console.error('Error al agregar producto:', error.message);
       return;
     } else {
-      console.log('Producto agregado con éxito:', data);
-      setName('');
-      setDescription('');
-      setPrice('');
-      setImageUrl('');
-      onProductAdded();
+      console.log('Producto agregado con exito:', data);
+      setTitulo('');
+      setDescripcion('');
+      setPrecio('');
+      setStock('');
+      setImagenUrl('');
+      onProductoAgregado();
     }
   };
 
@@ -34,11 +36,11 @@ const AddProduct = ({ onProductAdded }) => {
       <h2>Agregar nuevo producto</h2>
       <form onSubmit={handleSubmit}>
         <div style={{ marginBottom: '10px' }}>
-          <label>Nombre del producto:</label>
+          <label>Titulo del producto:</label>
           <input 
             type="text" 
-            value={name} 
-            onChange={(e) => setName(e.target.value)} 
+            value={titulo} 
+            onChange={(e) => setTitulo(e.target.value)}
             required 
             style={{ width: '100%', padding: '8px', marginBottom: '10px' }}
           />
@@ -46,8 +48,8 @@ const AddProduct = ({ onProductAdded }) => {
         <div style={{ marginBottom: '10px' }}>
           <label>Descripción:</label>
           <textarea 
-            value={description} 
-            onChange={(e) => setDescription(e.target.value)} 
+            value={descripcion}
+            onChange={(e) => setDescripcion(e.target.value)}
             required 
             style={{ width: '100%', padding: '8px', marginBottom: '10px' }}
           />
@@ -56,8 +58,18 @@ const AddProduct = ({ onProductAdded }) => {
           <label>Precio:</label>
           <input 
             type="number" 
-            value={price} 
-            onChange={(e) => setPrice(e.target.value)} 
+            value={precio} 
+            onChange={(e) => setPrecio(e.target.value)}
+            required 
+            style={{ width: '100%', padding: '8px', marginBottom: '10px' }}
+          />
+        </div>
+        <div style={{ marginBottom: '10px' }}>
+          <label>Stock:</label>
+          <input 
+            type="number" 
+            value={stock}
+            onChange={(e) => setStock(e.target.value)}
             required 
             style={{ width: '100%', padding: '8px', marginBottom: '10px' }}
           />
@@ -66,8 +78,8 @@ const AddProduct = ({ onProductAdded }) => {
           <label>URL de la imagen:</label>
           <input 
             type="text" 
-            value={imageUrl} 
-            onChange={(e) => setImageUrl(e.target.value)} 
+            value={imagenUrl}
+            onChange={(e) => setImagenUrl(e.target.value)}
             required 
             style={{ width: '100%', padding: '8px', marginBottom: '10px' }}
           />
@@ -80,11 +92,11 @@ const AddProduct = ({ onProductAdded }) => {
   );
 };
 
-const ProductTable = ({ products, onProductDeleted }) => {
+const ProductoTabla = ({ productos, eliminarProducto }) => {
 
   const handleDelete = async (id) => {
     const { data, error } = await supabase
-      .from('products')
+      .from('productos')
       .delete()
       .eq('id', id);
 
@@ -92,8 +104,8 @@ const ProductTable = ({ products, onProductDeleted }) => {
       console.error('Error al eliminar producto:', error.message);
       return;
     } else {
-      console.log('Producto eliminado con éxito:', data);
-      onProductDeleted();
+      console.log('Producto eliminado con exito:', data);
+      eliminarProducto();
     }
   };
 
@@ -106,21 +118,23 @@ const ProductTable = ({ products, onProductDeleted }) => {
             <th style={{ border: '1px solid #ddd', padding: '8px' }}>Nombre</th>
             <th style={{ border: '1px solid #ddd', padding: '8px' }}>Descripción</th>
             <th style={{ border: '1px solid #ddd', padding: '8px' }}>Precio</th>
+            <th style={{ border: '1px solid #ddd', padding: '8px' }}>Stock</th>
             <th style={{ border: '1px solid #ddd', padding: '8px' }}>Imagen</th>
             <th style={{ border: '1px solid #ddd', padding: '8px' }}>Acciones</th>
           </tr>
         </thead>
         <tbody>
-          {products.map((product) => (
-            <tr key={product.id}>
-              <td style={{ border: '1px solid #ddd', padding: '8px' }}>{product.name}</td>
-              <td style={{ border: '1px solid #ddd', padding: '8px' }}>{product.description}</td>
-              <td style={{ border: '1px solid #ddd', padding: '8px' }}>{product.price}</td>
+          {productos.map((producto) => (
+            <tr key={producto.id}>
+              <td style={{ border: '1px solid #ddd', padding: '8px' }}>{producto.titulo}</td>
+              <td style={{ border: '1px solid #ddd', padding: '8px' }}>{producto.descripcion}</td>
+              <td style={{ border: '1px solid #ddd', padding: '8px' }}>{producto.precio}</td>
+              <td style={{ border: '1px solid #ddd', padding: '8px' }}>{producto.stock}</td>
               <td style={{ border: '1px solid #ddd', padding: '8px' }}>
-                <img src={product.image_url} alt={product.name} style={{ width: '100px' }} />
+                <img src={producto.imagen_url} alt={producto.titulo} style={{ width: '100px' }} />
               </td>
               <td style={{ border: '1px solid #ddd', padding: '8px' }}>
-                <button onClick={() => handleDelete(product.id)}>Eliminar</button>
+                <button onClick={() => handleDelete(producto.id)}>Eliminar</button>
               </td>
             </tr>
           ))}
@@ -130,125 +144,31 @@ const ProductTable = ({ products, onProductDeleted }) => {
   );
 };
 
-const AddProductPage = () => {
-  const [products, setProducts] = useState([]);
+const AgregarProductoPage = () => {
+  const [productos, setProductos] = useState([]);
 
-  const fetchProducts = async () => {
+  const fetchProductos = async () => {
     const { data, error } = await supabase
-      .from('products')
+      .from('productos')
       .select('*');
 
     if (error) {
       console.error('Error al cargar productos:', error.message);
     } else {
-      setProducts(data);
+      setProductos(data);
     }
   };
 
   useEffect(() => {
-    fetchProducts();
+    fetchProductos();
   }, []);
 
   return (
     <div>
-      <AddProduct onProductAdded={fetchProducts} />
-      <ProductTable products={products} onProductDeleted={fetchProducts} />
+      <AddProduct onProductoAgregado={fetchProductos} />
+      <ProductoTabla productos={productos} eliminarProducto={fetchProductos} />
     </div>
   );
 };
 
-export default AddProductPage;
-
-
-
-
-
-
-
-
-
-
-
-/*import React, { useState } from 'react';
-import { supabase } from '../../supabaseClient';
-
-const AddProduct = () => {
-  const [name, setName] = useState('');
-  const [description, setDescription] = useState('');
-  const [price, setPrice] = useState('');
-  const [imageUrl, setImageUrl] = useState('');
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    const { data, error } = await supabase
-      .from('products')
-      .insert([
-        { name, description, price, image_url: imageUrl }
-    ]);
-
-    if (error) {
-      console.error('Error al agregar producto:', error.message);
-      return;
-    } else {
-      console.log('Producto agregado con éxito:', data);
-      setName('');
-      setDescription('');
-      setPrice('');
-      setImageUrl('');
-    }
-  };
-
-  return (
-    <div style={{ maxWidth: '400px', margin: '0 auto', padding: '20px', border: '1px solid #ccc' }}>
-      <h2>Agregar nuevo producto</h2>
-      <form onSubmit={handleSubmit}>
-        <div style={{ marginBottom: '10px' }}>
-          <label>Nombre del producto:</label>
-          <input 
-            type="text" 
-            value={name} 
-            onChange={(e) => setName(e.target.value)} 
-            required 
-            style={{ width: '100%', padding: '8px', marginBottom: '10px' }}
-          />
-        </div>
-        <div style={{ marginBottom: '10px' }}>
-          <label>Descripción:</label>
-          <textarea 
-            value={description} 
-            onChange={(e) => setDescription(e.target.value)} 
-            required 
-            style={{ width: '100%', padding: '8px', marginBottom: '10px' }}
-          />
-        </div>
-        <div style={{ marginBottom: '10px' }}>
-          <label>Precio:</label>
-          <input 
-            type="number" 
-            value={price} 
-            onChange={(e) => setPrice(e.target.value)} 
-            required 
-            style={{ width: '100%', padding: '8px', marginBottom: '10px' }}
-          />
-        </div>
-        <div style={{ marginBottom: '10px' }}>
-          <label>URL de la imagen:</label>
-          <input 
-            type="text" 
-            value={imageUrl} 
-            onChange={(e) => setImageUrl(e.target.value)} 
-            required 
-            style={{ width: '100%', padding: '8px', marginBottom: '10px' }}
-          />
-        </div>
-        <button type="submit" style={{ padding: '10px 20px', backgroundColor: 'blue', color: 'white', border: 'none' }}>
-          Agregar Producto
-        </button>
-      </form>
-    </div>
-  );
-};
-
-export default AddProduct;
-*/
+export default AgregarProductoPage;

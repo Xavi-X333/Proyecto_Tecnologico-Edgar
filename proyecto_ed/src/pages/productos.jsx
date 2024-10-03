@@ -3,38 +3,39 @@ import './productos.css';
 import { supabase } from '../../supabaseClient';
 
 const Productos = () => {
-  const [products, setProducts] = useState([]);
+  const [productos, setProductos] = useState([]);
 
-  const fetchProducts = async () => {
-    let { data: products, error } = await supabase
-      .from('products')
+  const fetchProductos = async () => {
+    let { data: productos, error } = await supabase
+      .from('productos')
       .select('*');
 
     if (error) {
-      console.error('Error fetching products:', error);
+      console.error('Error fetching productos:', error);
     } else {
-      setProducts(products);
+      setProductos(productos);
     }
   };
   
   useEffect(() => {
-    fetchProducts();
+    fetchProductos();
   }, []);
 
   return (
     <>
     <div className='contenedor'>
-      {products.map((product) => (
-        <div className='producto' key={product.id}>
+      {productos.map((producto) => (
+        <div className='producto' key={producto.id}>
           <img
             className='imagen-producto'
-            src={product.image_url}
-            alt={product.name}
+            src={producto.imagen_url}
+            alt={producto.titulo}
           />
           <div className='info-producto'>
-            <p className='titulo'>{product.name}</p>
-            <p className='descripcion'>{product.description}</p>
-            <p className='precio'>Q. {product.price}</p>
+            <p className='titulo'>{producto.titulo}</p>
+            <p className='descripcion'>{producto.descripcion}</p>
+            <p className='stock'>Stock: {producto.stock}</p>
+            <p className='precio'>Q. {producto.precio}</p>
           </div>
         </div>
       ))}

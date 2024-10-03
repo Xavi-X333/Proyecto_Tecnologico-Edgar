@@ -13,7 +13,7 @@ function Inicio() {
             <h1 className="head">A nuestra cafeteria delice</h1>
             <div className="he-des">
                 <h5>"Una taza, mil razones para sonreír"</h5>
-                <a href="#" className="btn cta-btn">Explora</a>
+                
             </div>
         </div>
     </section>
@@ -64,7 +64,7 @@ Fundada el 1 de marzo de 2024 en Guatemala, nuestra cafetería nació con el pro
                 <div className="res-des">
                     <div className="global">
                         <h2 className="h2-sub">
-                            <span className="fil">D</span>escubre nuestro
+                            <span className="fil">Descubre nuestro</span>
                         </h2>
                         <h1 className="head hea-dark">Menu</h1>
                         <div className="circle">
@@ -91,7 +91,7 @@ Fundada el 1 de marzo de 2024 en Guatemala, nuestra cafetería nació con el pro
         <div className="container">
             <div className="global">
                 <h2 className="h2-sub">
-                    <span className="fil">G</span>ozalo en 
+                    <span className="fil">Gozalo en</span>
                 </h2>
                 <h1 className="head">Familia</h1>
             </div>
@@ -109,7 +109,7 @@ Fundada el 1 de marzo de 2024 en Guatemala, nuestra cafetería nació con el pro
                 <div className="res-des pad-rig">
                     <div className="global">
                         <h2 className="h2-sub">
-                            <span className="fil">D</span>egusta en familia junto
+                            <span className="fil">Degusta en familia</span>
                         </h2>
                         <h1 className="head hea-dark">con nosotros</h1>
                         <div className="circle">
@@ -132,11 +132,11 @@ Fundada el 1 de marzo de 2024 en Guatemala, nuestra cafetería nació con el pro
             <div className="footer-content">
 
                 <div className="footer-content-about">
-                    <h4>lorem ipsum dolor sit amet consectetur adipisicing elit. fugiat, quidem</h4>
+                    <h4>"Una taza, mil razones para sonreír"</h4>
                     <div className="circle">
                         <i className="fas fa-circle"></i>
                     </div>
-                    <p>te esperamos!!! </p>
+                    <p>Te esperamos!!! </p>
                 </div>
                 <div className="footer-div">
                     <div className="social-media">
@@ -154,22 +154,9 @@ Fundada el 1 de marzo de 2024 en Guatemala, nuestra cafetería nació con el pro
                             <li>
                                 <a href="#"><i className="fab fa-linkedin-in"></i></a>
                             </li>
-                            <li>
-                                <a href="#"><i className="fab fa-tripadvisor"></i></a>
-                            </li>
                         </ul>
                     </div>
-                    <div>
-                        <h4>Noticias</h4>
-                        <form action="" className="news-form">
-                            <input type="text" className="news-input"
-                            placeholder="Escribe tu email"
-                            />
-                            <button className="news-btn" type="submit">
-                                <i className="fas fa-envelope"></i>
-                            </button>
-                        </form>
-                    </div>
+                    
                 </div>
             </div>
         </div>

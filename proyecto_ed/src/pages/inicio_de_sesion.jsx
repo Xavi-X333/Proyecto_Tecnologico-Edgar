@@ -33,7 +33,7 @@ function Inicio_de_Sesion() {
                     </div>
                     <button className='boton-login' type='summit'>Siguiente</button>
                     <div className='register-link'>
-                        <p>No tienes una cuenta? <a href='#' onClick={registerLink}>Registrate</a></p>
+                        <p className='p_inferior'>No tienes una cuenta? <a href='#' onClick={registerLink}>Registrate</a></p>
                     </div>
                 </form>
             </div>
@@ -58,7 +58,7 @@ function Inicio_de_Sesion() {
                     </div>
                     <button className='boton-login' type='summit'>Registrarse</button>
                     <div className='register-link'>
-                        <p>Ya tienes una cuenta? <a href='#' onClick={loginlink}>Inicia Sesion</a></p>
+                        <p className='p_inferior'>Ya tienes una cuenta? <a href='#' onClick={loginlink}>Inicia Sesion</a></p>
                     </div>
                 </form>
             </div>
