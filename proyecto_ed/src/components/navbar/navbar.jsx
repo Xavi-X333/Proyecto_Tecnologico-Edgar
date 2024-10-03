@@ -12,9 +12,9 @@ const Navbar = () => {
             <nav className="navbar">
                 <Link to="/">Inicio</Link>
                 <Link to="/productos">Productos</Link>
-                <Link to="/pedidos">Pedidos</Link>
+                <Link to="/carritodecompras">Carrito de Compras</Link>
                 <Link to="/contacto">Contacto</Link>
-                <Link to="/inicio_de_sesion">Inicio de Seción</Link>
+                <Link to="/inicio_de_sesion">Inicio de Sesión</Link>
                 <Link to="/agregar_productos">Agregar Producto</Link>
             </nav>
         </header>

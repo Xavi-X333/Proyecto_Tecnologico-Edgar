@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { supabase } from '../../supabaseClient';
 
-const AddProduct = () => {  // Sin el async aquí
+const AddProduct = () => {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState('');
