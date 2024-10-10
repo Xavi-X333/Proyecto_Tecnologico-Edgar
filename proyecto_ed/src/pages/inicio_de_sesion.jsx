@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import './inicio_de_sesion.css'
+import './inicio_de_sesion.css';
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
 
+// Pagina de inicio de sesion
 function Inicio_de_Sesion() {
-    // Darle funicalidad al login con supabase
 
     const [action, setAction] = useState('');
 
@@ -62,6 +63,14 @@ function Inicio_de_Sesion() {
                     </div>
                 </form>
             </div>
+            <header>
+      <SignedOut>
+        <SignInButton />
+      </SignedOut>
+      <SignedIn>
+        <UserButton />
+      </SignedIn>
+    </header>
 
         </div>
     );
