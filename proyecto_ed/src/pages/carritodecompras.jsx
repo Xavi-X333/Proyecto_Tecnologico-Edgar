@@ -31,7 +31,7 @@ const Carrito_de_Compras = () => {
     if (error) {
       console.error('Error al agregar el producto al carrito:', error.mensaje);
     } else {
-      setCartItems(prevItems => [...prevItems, { ...producto, cantidad: 1 }]);
+      setElementosCarrito(prevItems => [...prevItems, { ...producto, cantidad: 1 }]);
     }
   };
   
