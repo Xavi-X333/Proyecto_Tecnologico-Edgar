@@ -38,7 +38,6 @@ function Inicio() {
                     <p>
 Fundada el 1 de marzo de 2024 en Guatemala, nuestra cafetería nació con el propósito de ofrecer más que una simple taza de café. Inspirados en la rica tradición cafetalera guatemalteca, nos abastecemos de pequeños productores locales para ofrecer café de la más alta calidad. Buscamos ser un espacio acogedor donde las personas puedan desconectar, compartir y disfrutar de momentos especiales. Cada visita a nuestra cafetería es una experiencia que combina sabor, calidez y autenticidad.
                     </p>
-                    <a href="#" className="btn cta-btn">Nosotros</a>
                 </div>
 
             </div>
@@ -142,17 +141,17 @@ Fundada el 1 de marzo de 2024 en Guatemala, nuestra cafetería nació con el pro
                     <div className="social-media">
                         <h4>Siguenos</h4>
                         <ul className="social-icons">
-                            <li>
-                                <a href="#"><i className="fab fa-twitter"></i></a>
+                        <li>
+                            <a href="https://twitter.com" target="_blank"><i className="fab fa-twitter"></i></a>
                             </li>
                             <li>
-                                <a href="#"><i className="fab fa-facebook-square"></i></a>
+                            <a href="https://facebook.com" target="_blank"><i className="fab fa-facebook-square"></i></a>
                             </li>
                             <li>
-                                <a href="#"><i className="fab fa-pinterest"></i></a>
+                            <a href="https://pinterest.com" target="_blank"><i className="fab fa-pinterest"></i></a>
                             </li>
                             <li>
-                                <a href="#"><i className="fab fa-linkedin-in"></i></a>
+                            <a href="https://linkedin.com" target="_blank"><i className="fab fa-linkedin-in"></i></a>
                             </li>
                         </ul>
                     </div>

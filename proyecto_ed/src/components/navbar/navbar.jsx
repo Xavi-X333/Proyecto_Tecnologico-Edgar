@@ -1,15 +1,24 @@
-import React from "react"
+import React, { useState } from "react";
 import logo from "../../assets/images/logo3.png";
-import { Link } from "react-router-dom"
-import './navbar.css'
+import { Link } from "react-router-dom";
+import './navbar.css';
 
 const Navbar = () => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggleMenu = () => {
+        setIsOpen(!isOpen);
+    };
+
     return (
         <header className="header">
             <Link to="/">
-                <img className="Logo" src={logo} alt="Logo"/>
+                <img className="Logo" src={logo} alt="Logo" />
             </Link>
-            <nav className="navbar">
+            <button className="navbar-toggle" onClick={toggleMenu}>
+                &#9776;
+            </button>
+            <nav className={`navbar ${isOpen ? 'open' : ''}`}>
                 <Link to="/">Inicio</Link>
                 <Link to="/productos">Productos</Link>
                 <Link to="/carritodecompras">Carrito de Compras</Link>
@@ -18,7 +27,7 @@ const Navbar = () => {
                 <Link to="/agregar_productos">Agregar Productos</Link>
             </nav>
         </header>
-    )
-}
+    );
+};
 
 export default Navbar;
