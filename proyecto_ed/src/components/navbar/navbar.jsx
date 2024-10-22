@@ -15,7 +15,7 @@ const Navbar = () => {
                 <Link to="/carritodecompras">Carrito de Compras</Link>
                 <Link to="/contacto">Contacto</Link>
                 <Link to="/inicio_de_sesion">Inicio de Sesión</Link>
-                <Link to="/agregar_productos">Agregar Producto</Link>
+                <Link to="/agregar_productos">Agregar Productos</Link>
             </nav>
         </header>
     )
