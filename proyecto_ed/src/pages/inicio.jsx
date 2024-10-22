@@ -28,7 +28,7 @@ function Inicio() {
                 <div className="res-des pad-rig">
                     <div className="global">
                         <h2 className="h2-sub">
-                            <span className="fil">D</span>escubre nuestra
+                            <span className="fil">Descubre nuestra</span>
                         </h2>
                         <h1 className="head hea-dark">historia</h1>
                         <div className="circle">
@@ -49,7 +49,7 @@ Fundada el 1 de marzo de 2024 en Guatemala, nuestra cafetería nació con el pro
         <div className="container">
             <div className="global">
                 <h2 className="h2-sub">
-                    <span className="fil">N</span>uestros mejores platillos
+                    <span className="fil">Nuestros mejores platillos</span>uestros mejores platillos
                 </h2>
                 <h1 className="head">a la orden</h1>
             </div>

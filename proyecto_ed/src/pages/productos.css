@@ -1,25 +1,80 @@
 body {
-    justify-content: space-around;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f9; /* Fondo suave */
 }
 
-
 .contenedor {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between; 
-  align-items: center; 
-  width: 100%;
-  padding: 40px;
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+align-items: center;
+width: 100%;
+max-width: 1200px; /* Limitar ancho máximo */
+padding: 40px;
 }
 
 .contenedor .producto {
-  background-color: white;
-  border: 2px solid rgba(255,255,255,.1); 
-  border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, .4);
-  padding: 25px;
-  margin: 15px;
-  width: 200px;
-  flex:none; 
+background-color: white;
+border: none;
+border-radius: 15px;
+box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Sombra más suave */
+padding: 20px;
+margin: 20px;
+width: 220px;
+flex: none;
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+text-align: center; /* Centrar el contenido */
+}
+
+.contenedor .producto:hover {
+transform: translateY(-10px); /* Efecto de elevación */
+box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); /* Sombra más fuerte al pasar el ratón */
+}
+
+.imagen-producto {
+width: 100%;
+border-radius: 10px; /* Bordes redondeados para las imágenes */
+margin-bottom: 15px;
+object-fit: cover;
+}
+
+.titulo {
+font-size: 18px;
+font-weight: bold;
+margin-bottom: 10px;
+color: #333;
+}
+
+.descripcion {
+font-size: 14px;
+color: #777;
+margin-bottom: 10px;
+}
+
+.stock, .precio {
+font-size: 16px;
+font-weight: 600;
+color: #333;
+}
+
+.precio {
+color: #e74c3c; /* Resaltar el precio en rojo */
+}
+
+/* Media query para pantallas más pequeñas */
+@media (max-width: 768px) {
+.contenedor {
+  padding: 20px;
+}
+
+.contenedor .producto {
+  width: 100%;
+  max-width: 320px; /* Máximo tamaño permitido en móviles */
+  margin: 10px auto;
+}
 }

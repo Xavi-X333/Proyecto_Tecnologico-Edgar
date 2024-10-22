@@ -55,10 +55,9 @@
     background: none;
     border: none;
     cursor: pointer;
-    z-index: 101; /* Para que esté sobre el navbar cerrado */
+    z-index: 101;
 }
 
-/* Media query para pantallas pequeñas */
 @media (max-width: 768px) {
     .navbar {
         position: absolute;
@@ -74,7 +73,7 @@
     }
 
     .navbar.open {
-        height: 300px;
+        height: 355px;
     }
 
     .navbar a {
