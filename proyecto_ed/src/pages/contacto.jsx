@@ -9,7 +9,7 @@ function Contacto() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await fetch('/proyecto_ed/api/send-email', {
+    const response = await fetch('/api/send-email', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
