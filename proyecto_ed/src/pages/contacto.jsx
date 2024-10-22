@@ -8,7 +8,7 @@ function Contacto() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     const response = await fetch('/api/send-email', {
       method: 'POST',
       headers: {
@@ -16,15 +16,16 @@ function Contacto() {
       },
       body: JSON.stringify({ nombre, correo, mensaje }),
     });
-
-    const result = await response.json();
-    
+  
     if (response.ok) {
+      const result = await response.json();
       console.log('Correo enviado con éxito:', result);
     } else {
-      console.error('Error al enviar el correo:', result.error);
+      const errorData = await response.json();
+      console.error('Error al enviar el correo:', errorData.error);
     }
   };
+  
 
   return (
     <section className='contacto'>
