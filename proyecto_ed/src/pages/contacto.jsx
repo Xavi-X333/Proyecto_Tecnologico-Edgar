@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
 import './contacto.css';
-import { Resend } from 'resend';
-
-const resend = new Resend(import.meta.env.VITE_RESEND_DELICE_API_KEY);
 
 function Contacto() {
   const [nombre, setNombre] = useState('');
@@ -12,21 +9,20 @@ function Contacto() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    try {
-      const { data, error } = await resend.emails.send({
-        from: 'Acme <onboarding@resend.dev>',
-        to: ['javierdpaz8@gmail.com', 'guzmancitaprado@gmail.com'],
-        subject: `Formulario de Contacto - Nombre: ${nombre} - Correo: ${correo}`,
-        html: `<p>${mensaje}</p>`,
-      });
+    const response = await fetch('/api/send-email', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ nombre, correo, mensaje }),
+    });
 
-      if (error) {
-        console.error('Error enviando el correo:', error);
-      } else {
-        console.log('Correo enviado con éxito:', data);
-      }
-    } catch (error) {
-      console.error('Error al enviar el correo:', error);
+    const result = await response.json();
+    
+    if (response.ok) {
+      console.log('Correo enviado con éxito:', result);
+    } else {
+      console.error('Error al enviar el correo:', result.error);
     }
   };
 
