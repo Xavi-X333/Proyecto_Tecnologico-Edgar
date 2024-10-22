@@ -5,8 +5,7 @@ import './agregarproductos.css';
 const ProductosManager = () => {
   const [productos, setProductos] = useState([]);
   const [editingId, setEditingId] = useState(null);
-  
-  // Estados para el formulario
+
   const [formData, setFormData] = useState({
     titulo: '',
     descripcion: '',
@@ -108,7 +107,7 @@ const ProductosManager = () => {
 
   return (
     <div className="productos-manager">
-      {/* Formulario */}
+      {}
       <div className="form-container">
         <h2>{editingId ? 'Editar Producto' : 'Agregar Nuevo Producto'}</h2>
         <form onSubmit={editingId ? (e) => { e.preventDefault(); handleUpdate(); } : handleSubmit}>
@@ -210,7 +209,7 @@ const ProductosManager = () => {
               <tr key={producto.id}>
                 <td>{producto.titulo}</td>
                 <td>{producto.descripcion}</td>
-                <td>${producto.precio}</td>
+                <td>Q.{producto.precio}</td>
                 <td>{producto.stock}</td>
                 <td>
                   <img 
