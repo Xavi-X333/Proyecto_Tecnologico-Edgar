@@ -172,6 +172,9 @@ const ShoppingCartApp = () => {
     }
   };
 
+
+
+  
   return (
     <div className="shopping-cart-container">
       <div className="products-grid">

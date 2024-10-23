@@ -45,6 +45,9 @@ Fundada el 1 de marzo de 2024 en Guatemala, nuestra cafetería nació con el pro
     </section>
 
 
+
+
+
     <section className="taste bt">
         <div className="container">
             <div className="global">
@@ -55,6 +58,10 @@ Fundada el 1 de marzo de 2024 en Guatemala, nuestra cafetería nació con el pro
             </div>
         </div>
     </section>
+
+
+
+
 
 
     <section className="disco">
@@ -97,6 +104,11 @@ Fundada el 1 de marzo de 2024 en Guatemala, nuestra cafetería nació con el pro
         </div>
     </section>
 
+
+
+
+
+
     <section>
         <div className="container">
             <div className="res-info">
@@ -124,6 +136,13 @@ Fundada el 1 de marzo de 2024 en Guatemala, nuestra cafetería nació con el pro
             </div>
         </div>
     </section>
+
+
+
+
+
+
+
 
 
     <footer>

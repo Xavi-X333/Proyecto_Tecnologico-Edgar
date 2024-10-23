@@ -8,7 +8,6 @@ import Productos from './pages/productos';
 import Contacto from './pages/contacto';
 import Inicio from './pages/inicio';
 import Inicio_de_Sesion from './pages/inicio_de_sesion';
-import AgregarProductos from './pages/agregarproductos';
 import Carrito_de_Compras from './pages/carritodecompras';
 
 function App() {
@@ -24,7 +23,6 @@ function App() {
                 <Route path="/carritodecompras" element={<Carrito_de_Compras />} />
                 <Route path="/contacto" element={<Contacto />} />
                 <Route path="/inicio_de_sesion" element={<Inicio_de_Sesion />} />
-                <Route path="/agregar_productos" element={<AgregarProductos />} />
             </Routes>
         </Router>
         </div>

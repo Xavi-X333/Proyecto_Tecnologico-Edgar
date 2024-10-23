@@ -14,10 +14,5 @@ a {
 }
 
 body {
-  background: url('./assets/images/fondo4.png') no-repeat;
-  display: flex;
-  background-size: cover;
-  background-position: center;
-  min-height: 100vh;
-  min-width: 1px;
+  background-color: #C08261;
 }
