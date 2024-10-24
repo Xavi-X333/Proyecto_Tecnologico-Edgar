@@ -2,17 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { supabase } from '../../supabaseClient';
 import './carritodecompras.css';
 
-const ShoppingCartApp = () => {
+const CarritoDeComprasApp = () => {
   const [productos, setProductos] = useState([]);
   const [carrito, setCarrito] = useState([]);
   const [total, setTotal] = useState(0);
-  const [NombreCliente, setNombreCliente] = useState('');
-  const [TelefonoCliente, setTelefonoCliente] = useState('');
-  const [loading, setLoading] = useState(false);
+  const [nombreCliente, setNombreCliente] = useState('');
+  const [telefonoCliente, setTelefonoCliente] = useState('');
+  const [cargando, setCargando] = useState(false);
 
   useEffect(() => {
-    fetchProductos();
-    cargarcarritodelLocalStorage();
+    obtenerProductos();
+    cargarCarritoDeLocalStorage();
   }, []);
 
   useEffect(() => {
@@ -20,7 +20,7 @@ const ShoppingCartApp = () => {
     calcularTotal();
   }, [carrito]);
 
-  const fetchProductos = async () => {
+  const obtenerProductos = async () => {
     const { data, error } = await supabase
       .from('productos')
       .select('*')
@@ -34,21 +34,21 @@ const ShoppingCartApp = () => {
     setProductos(data);
   };
 
-  const cargarcarritodelLocalStorage = () => {
-    const savedCart = localStorage.getItem('cart');
-    if (savedCart) {
-      setCarrito(JSON.parse(savedCart));
+  const cargarCarritoDeLocalStorage = () => {
+    const carritoGuardado = localStorage.getItem('cart');
+    if (carritoGuardado) {
+      setCarrito(JSON.parse(carritoGuardado));
     }
   };
 
   const calcularTotal = () => {
-    const newTotal = carrito.reduce((sum, item) => {
-      return sum + (item.precio * item.cantidad);
+    const nuevoTotal = carrito.reduce((suma, item) => {
+      return suma + (item.precio * item.cantidad);
     }, 0);
-    setTotal(newTotal);
+    setTotal(nuevoTotal);
   };
 
-  const agregaralCarrito = (producto) => {
+  const agregarAlCarrito = (producto) => {
     const itemExistente = carrito.find(item => item.id === producto.id);
     
     if (itemExistente) {
@@ -66,7 +66,7 @@ const ShoppingCartApp = () => {
     }
   };
 
-  const removerdelcarrito = (productoId) => {
+  const removerDelCarrito = (productoId) => {
     setCarrito(carrito.filter(item => item.id !== productoId));
   };
 
@@ -76,7 +76,7 @@ const ShoppingCartApp = () => {
         const nuevaCantidad = item.cantidad + delta;
         const producto = productos.find(p => p.id === productoId);
         
-        if ( nuevaCantidad > 0 && nuevaCantidad <= producto.stock) {
+        if (nuevaCantidad > 0 && nuevaCantidad <= producto.stock) {
           return { ...item, cantidad: nuevaCantidad };
         }
       }
@@ -86,88 +86,85 @@ const ShoppingCartApp = () => {
 
   const generarMensajeWhatsApp = () => {
     const mensaje = `
-      Pedido de ${NombreCliente}\n
-      Teléfono: +502 ${TelefonoCliente}\n
+      Pedido de ${nombreCliente}\n
+      Teléfono: +502 ${telefonoCliente}\n
       Total: Q.${total.toFixed(2)}\n
       Productos:\n
       ${carrito.map(item => `- ${item.titulo} x ${item.cantidad} (Q.${item.precio} c/u)`).join('\n')}
     `;
 
-    const whatsappLink = `https://wa.me/502${TelefonoCliente}?text=${encodeURIComponent(mensaje)}`;
-    window.open(whatsappLink, '_blank');
+    const linkWhatsapp = `https://wa.me/502${telefonoCliente}?text=${encodeURIComponent(mensaje)}`;
+    window.open(linkWhatsapp, '_blank');
   };
 
-  const submitOrder = async () => {
-    if (!NombreCliente || !TelefonoCliente || carrito.length === 0) {
+  const enviarPedido = async () => {
+    if (!nombreCliente || !telefonoCliente || carrito.length === 0) {
       return;
     }
 
-    setLoading(true);
+    setCargando(true);
 
     const miNumero = "50247676566";
 
-    // Generar el mensaje de WhatsApp
     const mensaje = `
-      Pedido de ${NombreCliente}\n
-      Teléfono: +502 ${TelefonoCliente}\n
+      Pedido de ${nombreCliente}\n
+      Teléfono: +502 ${telefonoCliente}\n
       Total: Q.${total.toFixed(2)}\n
       Productos:\n
       ${carrito.map(item => `- ${item.titulo} x ${item.cantidad} (Q.${item.precio} c/u)`).join('\n')}
     `;
 
-    const whatsappLink = `https://wa.me/${miNumero}?text=${encodeURIComponent(mensaje)}`;
+    const linkWhatsapp = `https://wa.me/${miNumero}?text=${encodeURIComponent(mensaje)}`;
     
-    window.open(whatsappLink, '_blank');
+    window.open(linkWhatsapp, '_blank');
 
     try {
-      const { data: orderData, error: orderError } = await supabase
+      const { data: datosPedido, error: errorPedido } = await supabase
         .from('pedidos')
         .insert([{
-          nombre_cliente: NombreCliente,
-          telefono_cliente: TelefonoCliente,
+          nombre_cliente: nombreCliente,
+          telefono_cliente: telefonoCliente,
           total_de_compra: total,
           status: 'pending'
         }])
         .select()
         .single();
 
-      if (orderError) throw orderError;
+      if (errorPedido) throw errorPedido;
 
-      const orderItems = carrito.map(item => ({
-        pedido_id: orderData.id,
+      const elementosPedido = carrito.map(item => ({
+        pedido_id: datosPedido.id,
         producto_id: item.id,
         cantidad: item.cantidad,
         precio_al_momento: item.precio
       }));
 
-      const { error: itemsError } = await supabase
+      const { error: errorElementos } = await supabase
         .from('elementos_del_pedido')
-        .insert(orderItems);
+        .insert(elementosPedido);
 
-      if (itemsError) throw itemsError;
+      if (errorElementos) throw errorElementos;
 
       for (const item of carrito) {
-        const { error: stockError } = await supabase
+        const { error: errorStock } = await supabase
           .from('productos')
           .update({ stock: item.stock - item.cantidad })
           .eq('id', item.id);
 
-        if (stockError) throw stockError;
+        if (errorStock) throw errorStock;
       }
 
       setCarrito([]);
       setNombreCliente('');
       setTelefonoCliente('');
-      fetchProductos();
+      obtenerProductos();
 
     } catch (error) {
-      console.error('Error en el envio del pedido:', error);
+      console.error('Error en el envío del pedido:', error);
     } finally {
-      setLoading(false);
+      setCargando(false);
     }
   };
-
-
 
   return (
     <div className="shopping-cart-container">
@@ -190,7 +187,7 @@ const ShoppingCartApp = () => {
                   </p>
                   <button
                     className="add-to-cart-button"
-                    onClick={() => agregaralCarrito(producto)}
+                    onClick={() => agregarAlCarrito(producto)}
                     disabled={producto.stock === 0}
                   >
                     Agregar al Carrito
@@ -228,7 +225,7 @@ const ShoppingCartApp = () => {
                   </button>
                   <button
                     className="remove-button"
-                    onClick={() => removerdelcarrito(item.id)}
+                    onClick={() => removerDelCarrito(item.id)}
                   >
                     Eliminar
                   </button>
@@ -244,14 +241,14 @@ const ShoppingCartApp = () => {
                 type="text"
                 className="customer-input"
                 placeholder="Nombre"
-                value={NombreCliente}
+                value={nombreCliente}
                 onChange={(e) => setNombreCliente(e.target.value)}
               />
               <input
                 type="text"
                 className="customer-input"
                 placeholder="Teléfono"
-                value={TelefonoCliente}
+                value={telefonoCliente}
                 onChange={(e) => setTelefonoCliente(e.target.value)}
               />
               <div className="checkout-footer">
@@ -260,10 +257,10 @@ const ShoppingCartApp = () => {
                 </div>
                 <button
                   className="submit-button"
-                  onClick={submitOrder}
-                  disabled={loading || !NombreCliente || !TelefonoCliente}
+                  onClick={enviarPedido}
+                  disabled={cargando || !nombreCliente || !telefonoCliente}
                 >
-                  {loading ? 'Procesando...' : 'Confirmar y Enviar por WhatsApp'}
+                  {cargando ? 'Procesando...' : 'Confirmar y Enviar por WhatsApp'}
                 </button>
               </div>
             </div>
@@ -278,4 +275,4 @@ const ShoppingCartApp = () => {
   );
 };
 
-export default ShoppingCartApp;
+export default CarritoDeComprasApp;
