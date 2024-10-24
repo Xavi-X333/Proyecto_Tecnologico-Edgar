@@ -29,8 +29,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-/* <Link to="/contacto">Contacto</Link>
-    <Link to="/inicio_de_sesion">Inicio de Sesión</Link>
-    
-*/
