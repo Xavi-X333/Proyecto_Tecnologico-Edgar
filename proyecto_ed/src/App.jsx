@@ -9,6 +9,7 @@ import Contacto from './pages/contacto';
 import Inicio from './pages/inicio';
 import Inicio_de_Sesion from './pages/inicio_de_sesion';
 import Carrito_de_Compras from './pages/carritodecompras';
+import AgregarProductos from './pages/agregarproductos';
 
 function App() {
     return (
@@ -23,6 +24,7 @@ function App() {
                 <Route path="/carritodecompras" element={<Carrito_de_Compras />} />
                 <Route path="/contacto" element={<Contacto />} />
                 <Route path="/inicio_de_sesion" element={<Inicio_de_Sesion />} />
+                <Route path="/agregar_productos" element={<AgregarProductos />} />
             </Routes>
         </Router>
         </div>
