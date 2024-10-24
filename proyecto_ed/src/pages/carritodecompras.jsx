@@ -104,6 +104,8 @@ const ShoppingCartApp = () => {
 
     setLoading(true);
 
+    const miNumero = "50247676566";
+
     // Generar el mensaje de WhatsApp
     const mensaje = `
       Pedido de ${NombreCliente}\n
@@ -113,9 +115,8 @@ const ShoppingCartApp = () => {
       ${carrito.map(item => `- ${item.titulo} x ${item.cantidad} (Q.${item.precio} c/u)`).join('\n')}
     `;
 
-    const whatsappLink = `https://wa.me/502${TelefonoCliente}?text=${encodeURIComponent(mensaje)}`;
+    const whatsappLink = `https://wa.me/${miNumero}?text=${encodeURIComponent(mensaje)}`;
     
-    // Abrir el enlace de WhatsApp en una nueva pestaña
     window.open(whatsappLink, '_blank');
 
     try {
@@ -165,6 +166,7 @@ const ShoppingCartApp = () => {
       setLoading(false);
     }
   };
+
 
 
   return (
