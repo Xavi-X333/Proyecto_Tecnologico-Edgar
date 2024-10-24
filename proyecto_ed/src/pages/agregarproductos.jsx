@@ -19,12 +19,12 @@ const ProductosManager = () => {
   const [isLocked, setIsLocked] = useState(false);
 
   useEffect(() => {
-    const token = localStorage.getItem('auth_token');
+    const token = sessionStorage.getItem('auth_token');
     if (token) {
       setAuthenticated(true);
     }
     
-    const lockTime = localStorage.getItem('lock_time');
+    const lockTime = sessionStorage.getItem('lock_time');
     if (lockTime && new Date().getTime() - lockTime < 300000) { // 5 minutos
       setIsLocked(true);
     }
@@ -147,13 +147,13 @@ const ProductosManager = () => {
 
       if (loginAttempts + 1 >= 5) {
         setIsLocked(true);
-        localStorage.setItem('lock_time', new Date().getTime());
+        sessionStorage.setItem('lock_time', new Date().getTime());
         alert('Has excedido el número de intentos. Intenta de nuevo en 5 minutos.');
       } else {
         alert('Usuario o contraseña incorrectos. Intentos restantes: ' + (5 - loginAttempts - 1));
       }
     } else {
-      localStorage.setItem('auth_token', 'authenticated');
+      sessionStorage.setItem('auth_token', 'authenticated');
       setAuthenticated(true);
     }
   };
