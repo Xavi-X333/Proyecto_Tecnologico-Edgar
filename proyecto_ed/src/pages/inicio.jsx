@@ -130,7 +130,9 @@ Fundada el 1 de marzo de 2024 en Guatemala, nuestra cafetería nació con el pro
                     <p>
                     Te invitamos a visitar nuestro local, donde podrás disfrutar de nuestras deliciosas comidas y refacciones, preparadas con los mejores ingredientes y pensadas para satisfacer todos los gustos. Ya sea que vengas con tu familia o amigos, encontrarás un ambiente cálido y acogedor, ideal para compartir momentos especiales mientras saboreas nuestros platillos. ¡No te pierdas la oportunidad de disfrutar de una experiencia culinaria única y llena de sabor!
                     </p>
-                    <a href="#" className="btn cta-btn">Has una reservacion</a>
+                    <a href="https://wa.me/50247676566?text=Hola,%20necesito%20hacer%20una%20reserva%20en%20tu%20cafeter%C3%ADa%20para%20mi%20evento.%20En%20un%20momento%20te%20doy%20los%20otros%20detalles" className="btn cta-btn">Has una reservacion</a>
+                    
+                        
                 </div>
 
             </div>

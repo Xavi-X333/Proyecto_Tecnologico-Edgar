@@ -7,7 +7,7 @@ const ShoppingCartApp = () => {
   const [carrito, setCarrito] = useState([]);
   const [total, setTotal] = useState(0);
   const [NombreCliente, setNombreCliente] = useState('');
-  const [EmailCliente, setEmailCliente] = useState('');
+  const [TelefonoCliente, setTelefonoCliente] = useState('');
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -84,52 +84,46 @@ const ShoppingCartApp = () => {
     }));
   };
 
-  const generarOrdenHTML = () => {
-    return `
-      <h2>Pedido de ${NombreCliente}</h2>
-      <p>Email: ${EmailCliente}</p>
-      <table border="1" style="border-collapse: collapse; width: 100%;">
-        <thead>
-          <tr>
-            <th>Producto</th>
-            <th>Cantidad</th>
-            <th>Precio Unitario</th>
-            <th>Subtotal</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${carrito.map(item => `
-            <tr>
-              <td>${item.titulo}</td>
-              <td>${item.cantidad}</td>
-              <td>Q.${item.precio}</td>
-              <td>Q.${(item.precio * item.cantidad).toFixed(2)}</td>
-            </tr>
-          `).join('')}
-        </tbody>
-        <tfoot>
-          <tr>
-            <td colspan="3"><strong>Total</strong></td>
-            <td><strong>Q.${total.toFixed(2)}</strong></td>
-          </tr>
-        </tfoot>
-      </table>
+  const generarMensajeWhatsApp = () => {
+    const mensaje = `
+      Pedido de ${NombreCliente}\n
+      Teléfono: +502 ${TelefonoCliente}\n
+      Total: Q.${total.toFixed(2)}\n
+      Productos:\n
+      ${carrito.map(item => `- ${item.titulo} x ${item.cantidad} (Q.${item.precio} c/u)`).join('\n')}
     `;
+
+    const whatsappLink = `https://wa.me/502${TelefonoCliente}?text=${encodeURIComponent(mensaje)}`;
+    window.open(whatsappLink, '_blank');
   };
 
   const submitOrder = async () => {
-    if (!NombreCliente || !EmailCliente || carrito.length === 0) {
+    if (!NombreCliente || !TelefonoCliente || carrito.length === 0) {
       return;
     }
 
     setLoading(true);
+
+    // Generar el mensaje de WhatsApp
+    const mensaje = `
+      Pedido de ${NombreCliente}\n
+      Teléfono: +502 ${TelefonoCliente}\n
+      Total: Q.${total.toFixed(2)}\n
+      Productos:\n
+      ${carrito.map(item => `- ${item.titulo} x ${item.cantidad} (Q.${item.precio} c/u)`).join('\n')}
+    `;
+
+    const whatsappLink = `https://wa.me/502${TelefonoCliente}?text=${encodeURIComponent(mensaje)}`;
+    
+    // Abrir el enlace de WhatsApp en una nueva pestaña
+    window.open(whatsappLink, '_blank');
 
     try {
       const { data: orderData, error: orderError } = await supabase
         .from('pedidos')
         .insert([{
           nombre_cliente: NombreCliente,
-          email_cliente: EmailCliente,
+          telefono_cliente: TelefonoCliente,
           total_de_compra: total,
           status: 'pending'
         }])
@@ -162,7 +156,7 @@ const ShoppingCartApp = () => {
 
       setCarrito([]);
       setNombreCliente('');
-      setEmailCliente('');
+      setTelefonoCliente('');
       fetchProductos();
 
     } catch (error) {
@@ -173,12 +167,9 @@ const ShoppingCartApp = () => {
   };
 
 
-
-  
   return (
     <div className="shopping-cart-container">
       <div className="products-grid">
-        {/* Lista de Productos */}
         <div className="products-section">
           <h2 className="section-title">Productos Disponibles</h2>
           <div className="products-list">
@@ -208,7 +199,6 @@ const ShoppingCartApp = () => {
           </div>
         </div>
 
-        {/* Carrito */}
         <div className="cart-section">
           <h2 className="section-title">Carrito de Compras</h2>
           
@@ -256,11 +246,11 @@ const ShoppingCartApp = () => {
                 onChange={(e) => setNombreCliente(e.target.value)}
               />
               <input
-                type="email"
+                type="text"
                 className="customer-input"
-                placeholder="Email"
-                value={EmailCliente}
-                onChange={(e) => setEmailCliente(e.target.value)}
+                placeholder="Teléfono"
+                value={TelefonoCliente}
+                onChange={(e) => setTelefonoCliente(e.target.value)}
               />
               <div className="checkout-footer">
                 <div className="total-amount">
@@ -269,9 +259,9 @@ const ShoppingCartApp = () => {
                 <button
                   className="submit-button"
                   onClick={submitOrder}
-                  disabled={loading || !NombreCliente || !EmailCliente}
+                  disabled={loading || !NombreCliente || !TelefonoCliente}
                 >
-                  {loading ? 'Procesando...' : 'Confirmar Pedido'}
+                  {loading ? 'Procesando...' : 'Confirmar y Enviar por WhatsApp'}
                 </button>
               </div>
             </div>
