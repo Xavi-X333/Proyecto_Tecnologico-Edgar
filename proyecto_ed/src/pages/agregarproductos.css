@@ -4,7 +4,6 @@
   margin: 0 auto;
 }
 
-/* Estilos para el formulario de productos */
 .form-container {
   background: white;
   padding: 20px;
@@ -137,7 +136,6 @@ tr:hover {
   white-space: nowrap;
 }
 
-/* Estilos para el formulario de login sobrepuesto */
 .login-overlay {
   position: fixed;
   top: 0;

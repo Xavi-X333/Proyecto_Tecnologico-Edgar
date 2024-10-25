@@ -5,7 +5,7 @@ body {
   min-height: 100vh;
   margin: 0;
   font-family: 'Arial', sans-serif;
-  background-color: #f4f4f9; /* Fondo suave */
+  background-color: #f4f4f9;
 }
 
 .contenedor {
@@ -14,7 +14,7 @@ flex-wrap: wrap;
 justify-content: center;
 align-items: center;
 width: 100%;
-max-width: 1200px; /* Limitar ancho máximo */
+max-width: 1200px;
 padding: 40px;
 }
 
@@ -22,24 +22,24 @@ padding: 40px;
 background-color: white;
 border: none;
 border-radius: 15px;
-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Sombra más suave */
+box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 padding: 20px;
 margin: 20px;
 width: 220px;
 flex: none;
 transition: transform 0.3s ease, box-shadow 0.3s ease;
-text-align: center; /* Centrar el contenido */
+text-align: center;
 }
 
 .contenedor .producto:hover {
-transform: translateY(-10px); /* Efecto de elevación */
-box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); /* Sombra más fuerte al pasar el ratón */
+transform: translateY(-10px);
+box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
 .imagen-producto {
   width: 100%;
-  height: 150px; /* Ajustar la altura de la imagen */
-  border-radius: 10px; /* Bordes redondeados para las imágenes */
+  height: 150px;
+  border-radius: 10px;
   margin-bottom: 15px;
   object-fit: cover;
 }
@@ -64,10 +64,10 @@ color: #333;
 }
 
 .precio {
-color: #e74c3c; /* Resaltar el precio en rojo */
+color: #e74c3c;
 }
 
-/* Media query para pantallas más pequeñas */
+
 @media (max-width: 768px) {
 .contenedor {
   padding: 20px;
@@ -77,16 +77,16 @@ color: #e74c3c; /* Resaltar el precio en rojo */
   background-color: white;
   border: none;
   border-radius: 15px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Sombra más suave */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   padding: 20px;
   margin: 20px;
   width: 220px;
-  height: 350px; /* Fijar la altura del contenedor */
+  height: 350px;
   display: flex;
-  flex-direction: column; /* Alinear el contenido verticalmente */
+  flex-direction: column;
   justify-content: space-between;
   flex: none;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  text-align: center; /* Centrar el contenido */
+  text-align: center;
 }
 }

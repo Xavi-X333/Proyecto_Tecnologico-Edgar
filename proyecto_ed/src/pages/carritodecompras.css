@@ -5,15 +5,13 @@ body {
   padding: 0;
 }
 
-/* Contenedor del carrito */
 .shopping-cart-container {
   display: grid;
-  grid-template-columns: 1fr; /* 1 columna en móviles */
+  grid-template-columns: 1fr;
   gap: 20px;
   width: 100%;
 }
 
-/* Grid de productos */
 .products-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -23,18 +21,17 @@ body {
 
 @media (min-width: 768px) {
   .products-grid {
-    grid-template-columns: 1fr 1fr; /* 2 columnas en tablets */
+    grid-template-columns: 1fr 1fr;
   }
 }
 
 @media (min-width: 1024px) {
   .products-grid {
-    grid-template-columns: 2fr 1fr; /* Productos y carrito en 2 columnas en escritorio */
+    grid-template-columns: 2fr 1fr;
     gap: 40px;
   }
 }
 
-/* Título de la sección */
 .section-title {
   font-size: 28px;
   font-weight: bold;
@@ -43,13 +40,11 @@ body {
   color: #2d3748;
 }
 
-/* Listado de productos */
 .products-list {
   display: grid;
   gap: 20px;
 }
 
-/* Tarjeta de producto */
 .product-card {
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -62,7 +57,6 @@ body {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
-/* Imagen de producto */
 .product-image {
   width: 100%;
   height: 200px;
@@ -71,7 +65,6 @@ body {
   margin-bottom: 10px;
 }
 
-/* Título y descripción del producto */
 .product-title {
   font-size: 20px;
   font-weight: bold;
@@ -87,7 +80,6 @@ body {
   text-align: center;
 }
 
-/* Precio y stock del producto */
 .product-price {
   font-size: 22px;
   font-weight: bold;
@@ -111,7 +103,6 @@ body {
   font-size: 12px;
 }
 
-/* Botón para agregar al carrito */
 .add-to-cart-button {
   width: 100%;
   padding: 10px;
@@ -133,7 +124,6 @@ body {
   cursor: not-allowed;
 }
 
-/* Sección del carrito */
 .cart-section {
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -146,7 +136,7 @@ body {
 
 @media (min-width: 1024px) {
   .cart-section {
-    width: 100%; /* Ajusta el ancho en escritorio */
+    width: 100%; 
     max-width: 500px;
     align-self: start;
   }
@@ -178,7 +168,6 @@ body {
   font-weight: bold;
 }
 
-/* Botones de cantidad */
 .cart-item-actions {
   display: flex;
   align-items: center;
@@ -209,7 +198,6 @@ body {
   color: #2d3748;
 }
 
-/* Botón para remover producto */
 .remove-button {
   padding: 6px 12px;
   background: #e53e3e;
@@ -224,7 +212,6 @@ body {
   background: #c53030;
 }
 
-/* Sección de pago */
 .checkout-section {
   margin-top: 20px;
   padding-top: 20px;
@@ -279,7 +266,6 @@ body {
   cursor: not-allowed;
 }
 
-/* Mensaje de carrito vacío */
 .empty-cart {
   text-align: center;
   padding: 40px;
