@@ -11,7 +11,7 @@ const Productos = () => {
       .select('*');
 
     if (error) {
-      console.error('Error fetching productos:', error);
+      console.error('Error al mostrar productos:', error);
     } else {
       setProductos(productos);
     }
